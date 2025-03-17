@@ -1,0 +1,29 @@
+# Backups and temporary files
+*.*~
+*.swp
+*.bak
+*.tmp
+*.out
+*.o
+
+# Ignore .vscode/ in every subdirectory
+**/.vscode/
+
+# Ignore macOS metadata files
+**/.DS_Store/
+
+# Tags
+tags
+
+# Test files
+*test*
+*.a
+*.exe
+
+# Don't ignore test inside of src
+!src/**/*test*
+
+# Compilation outputs
+**/objs/
+**/debug/
+**/*.dSYM/

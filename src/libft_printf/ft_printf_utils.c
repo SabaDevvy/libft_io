@@ -6,11 +6,11 @@
 /*   By: gsabatin <gsabatin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/17 17:09:39 by gsabatin          #+#    #+#             */
-/*   Updated: 2025/03/05 14:10:49 by gsabatin         ###   ########.fr       */
+/*   Updated: 2025/03/18 07:59:03 by gsabatin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/libft_printf.h"
+#include "../../includes/libft_printf.h"
 #include <unistd.h>
 
 void	ft_init_flags(t_flags *flags)

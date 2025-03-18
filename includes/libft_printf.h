@@ -6,12 +6,12 @@
 /*   By: gsabatin <gsabatin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/14 22:35:14 by gsabatin          #+#    #+#             */
-/*   Updated: 2025/03/05 17:00:53 by gsabatin         ###   ########.fr       */
+/*   Updated: 2025/03/17 19:06:51 by gsabatin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef FT_PRINTF_H
-# define FT_PRINTF_H
+#ifndef LIBFT_PRINTF_H
+# define LIBFT_PRINTF_H
 
 # include <stdarg.h>
 
@@ -75,4 +75,4 @@ int		ft_num_len(unsigned long n, int base_len);
 // Putnumbers
 int		ft_putnbr_base(unsigned long num, char *base);
 
-#endif /* FT_PRINTF_H */
+#endif

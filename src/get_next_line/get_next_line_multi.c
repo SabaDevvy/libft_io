@@ -6,7 +6,7 @@
 /*   By: gsabatin <gsabatin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/26 15:55:29 by gsabatin          #+#    #+#             */
-/*   Updated: 2025/03/17 10:03:10 by gsabatin         ###   ########.fr       */
+/*   Updated: 2025/03/18 01:08:52 by gsabatin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,18 +22,18 @@ static char	*ft_update_buffer(char *buffer)
 	i = 0;
 	while (buffer[i] && buffer[i] != '\n')
 		i++;
-	if (!buffer[i])
+	if (!buffer[i] || buffer[i + 1])
 	{
 		free (buffer);
 		return (NULL);
 	}
-	new_buffer = malloc(ft_strlen(buffer) - i + 1);
+	new_buffer = malloc(ft_strlen(buffer) - i);
 	if (!new_buffer)
 	{
 		free(buffer);
 		return (NULL);
 	}
-	ft_strlcpy(new_buffer, &buffer[i + 1], ft_strlen(buffer) - i + 1);
+	ft_strlcpy(new_buffer, &buffer[i + 1], ft_strlen(buffer) - i);
 	free(buffer);
 	return (new_buffer);
 }
@@ -66,7 +66,7 @@ static char	*ft_handle_buffer(t_buffer *node, int fd)
 	if (!temp)
 		return (NULL);
 	bytes_read = 1;
-	while (bytes_read && (!node -> buffer || !ft_strchr(node->buffer, '\n')))
+	while (bytes_read && (!node->buffer || !ft_strchr(node->buffer, '\n')))
 	{
 		bytes_read = read(fd, temp, BUFFER_SIZE);
 		if (bytes_read == -1)
@@ -92,16 +92,16 @@ static t_buffer	*ft_find_buffer(t_buffer **head, int fd)
 	t_buffer	*new_node;
 
 	current = *head;
-	while (current && current -> fd != fd)
-		current = current -> next;
+	while (current && current->fd != fd)
+		current = current->next;
 	if (current)
 		return (current);
 	new_node = malloc(sizeof(t_buffer));
 	if (!new_node)
 		return (NULL);
-	new_node -> fd = fd;
-	new_node -> buffer = NULL;
-	new_node -> next = *head;
+	new_node->fd = fd;
+	new_node->buffer = NULL;
+	new_node->next = *head;
 	*head = new_node;
 	return (new_node);
 }
@@ -122,14 +122,14 @@ char	*get_next_line_multi(int fd)
 	if (!current)
 		return (NULL);
 	if (!current->buffer || !ft_strchr(current->buffer, '\n'))
-		current -> buffer = ft_handle_buffer(current, fd);
-	if (!current -> buffer)
+		current->buffer = ft_handle_buffer(current, fd);
+	if (!current->buffer)
 	{
 		ft_remove_buffer(&buffer_list, fd);
 		return (NULL);
 	}
-	line = ft_extract_line(current -> buffer);
-	current -> buffer = ft_update_buffer(current -> buffer);
+	line = ft_extract_line(current->buffer);
+	current->buffer = ft_update_buffer(current->buffer);
 	if (!current -> buffer)
 		ft_remove_buffer(&buffer_list, fd);
 	return (line);

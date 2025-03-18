@@ -6,7 +6,7 @@
 /*   By: gsabatin <gsabatin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/26 12:58:24 by gsabatin          #+#    #+#             */
-/*   Updated: 2025/03/17 09:30:40 by gsabatin         ###   ########.fr       */
+/*   Updated: 2025/03/18 01:09:00 by gsabatin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,18 +22,18 @@ static char	*ft_update_buffer(char *buffer)
 	i = 0;
 	while (buffer[i] && buffer[i] != '\n')
 		i++;
-	if (!buffer[i])
+	if (!buffer[i] || !buffer[i + 1])
 	{
-		free (buffer);
+		free(buffer);
 		return (NULL);
 	}
-	new_buffer = malloc(ft_strlen(buffer) - i + 1);
+	new_buffer = malloc(ft_strlen(buffer) - i);
 	if (!new_buffer)
 	{
 		free(buffer);
 		return (NULL);
 	}
-	ft_strlcpy(new_buffer, &buffer[i + 1], ft_strlen(buffer) - i + 1);
+	ft_strlcpy(new_buffer, &buffer[i + 1], ft_strlen(buffer) - i);
 	free(buffer);
 	return (new_buffer);
 }

@@ -6,7 +6,7 @@
 /*   By: gsabatin <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/17 09:14:47 by gsabatin          #+#    #+#             */
-/*   Updated: 2025/03/17 10:02:59 by gsabatin         ###   ########.fr       */
+/*   Updated: 2025/03/18 01:06:58 by gsabatin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,17 +22,17 @@ void	ft_remove_buffer(t_buffer **head, int fd)
 		return ;
 	current = *head;
 	previous = NULL;
-	while (current && current -> fd != fd)
+	while (current && current->fd != fd)
 	{
 		previous = current;
-		current = current -> next;
+		current = current->next;
 	}
 	if (!current)
 		return ;
 	if (previous)
-		previous -> next = current -> next;
+		previous->next = current->next;
 	else
-		*head = current -> next;
-	free(current -> buffer);
+		*head = current->next;
+	free(current->buffer);
 	free(current);
 }

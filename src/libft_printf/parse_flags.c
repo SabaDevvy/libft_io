@@ -6,11 +6,11 @@
 /*   By: gsabatin <gsabatin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/18 10:00:00 by gsabatin          #+#    #+#             */
-/*   Updated: 2025/03/05 14:11:12 by gsabatin         ###   ########.fr       */
+/*   Updated: 2025/03/18 07:59:36 by gsabatin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/libft_printf.h"
+#include "../../includes/libft_printf.h"
 
 static int	ft_is_flag(char c)
 {
